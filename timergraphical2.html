@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        body {
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            background: black;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-content: center;
+        }
+
+        .section-01 {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: center;
+            margin-top: 150px;
+
+        }
+
+        .class-1 {
+            height: 4vw;
+            width: 11vw;
+            background-color: red;
+            border: 2px solid black;
+            margin: 8px;
+            border-radius: 10px;
+        }
+
+        .class-2 {
+            height: 4vw;
+            width: 11vw;
+            background-color: green;
+            border: 2px solid black;
+            margin: 8px;
+            border-radius: 10px;
+        }
+
+        .class-3 {
+            height: 4vw;
+            width: 11vw;
+            background-color: blue;
+            border: 2px solid black;
+            margin: 8px;
+            border-radius: 10px;
+        }
+
+        .class-4 {
+            height: 4vw;
+            width: 11vw;
+            background-color: yellow;
+            border: 2px solid black;
+            margin: 8px;
+            border-radius: 10px;
+        }
+
+        .class-5 {
+            height: 4vw;
+            width: 11vw;
+            background-color: peachpuff;
+            border: 2px solid black;
+            margin: 8px;
+            border-radius: 10px;
+        }
+
+        .class-6 {
+            height: 4vw;
+            width: 11vw;
+            background-color: plum;
+            border: 2px solid black;
+            margin: 8px;
+            border-radius: 10px;
+        }
+
+        .big-2 {
+            display: flex;
+            width: 45vw;
+            justify-content: center;
+        }
+
+        .big-1 {
+            width: 71vw;
+            border-bottom: 2px solid white;
+
+        }
+
+        .big-3 {
+            display: flex;
+            width: 71vw;
+            justify-content: flex-end;
+            border-top: 2px solid white;
+        }
+        
+        .section-02 {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .button {
+            border: 5px solid green;
+            border-radius: 50%;
+            align-items: center;
+            height: 100px;
+            width: 100px;
+            background: deepskyblue;
+            color: white;
+        }
+        #button-stop {
+            
+            background-color: red;
+        }
+        .section-02 {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<h1>Js Timers</h1>
+
+
+
+<section class="section-01">
+    <div class="big-1">
+    <div class="class-1" id=div-1 ></div>
+    </div>
+
+    <div class="big-2">
+    <div class="class-2" id="div-2" ></div>
+    <div class="class-3" id="div-3" ></div>
+    <div class="class-4" id="div-4" ></div>
+    <div class="class-5" id="div-5" ></div>
+    </div>
+
+    <div class="big-3">
+    <div class="class-6" id="div-6" ></div>
+    </div>
+
+</section>
+
+<section class="section-02">
+    <button class="button" id="button-start">Start</button>
+    <button class="button" id="button-stop">Stop</button>
+</section>
+
+
+<script>
+    let start_button = document.getElementById("button-start")
+    let stop_button = document.getElementById("button-stop")
+
+    let intervalId;
+
+    start_button.addEventListener('click', function () {
+
+    let arr = ["red", "green", "blue", "yellow", "peachpuff", "plum"];
+
+        document.getElementById("div-1").style.backgroundColor="red";
+        document.getElementById("div-2").style.backgroundColor="green";
+        document.getElementById("div-3").style.backgroundColor="blue";
+        document.getElementById("div-4").style.backgroundColor="yellow"
+        document.getElementById("div-5").style.backgroundColor="peachpuff";
+        document.getElementById("div-6").style.backgroundColor="plum";
+
+        intervalId =setInterval(() => {
+        let last_value=arr.pop();
+        arr.unshift(last_value);
+
+        document.getElementById("div-1").style.backgroundColor = arr[0];
+        document.getElementById("div-2").style.backgroundColor = arr[1];
+        document.getElementById("div-3").style.backgroundColor = arr[2];
+        document.getElementById("div-4").style.backgroundColor = arr[3];
+        document.getElementById("div-5").style.backgroundColor = arr[4];
+        document.getElementById("div-6").style.backgroundColor = arr[5];
+
+       }, 3000);
+    })
+
+    stop_button.addEventListener('click', function () {
+        clearInterval(intervalId);
+    });
+</script>
+</body>
+</html>

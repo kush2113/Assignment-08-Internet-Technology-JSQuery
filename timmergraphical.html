@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        body {
+            background: black;
+        }
+
+        h1 {
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-content: center;
+        }
+
+        section {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 71px;
+        }
+
+
+        section div{
+            border: 2px solid green;
+            background: black;
+            color: white;
+            width: 100px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .section-02 {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .button {
+            border: 5px solid green;
+            border-radius: 50%;
+            align-items: center;
+            height: 100px;
+            width: 100px;
+            background: deepskyblue;
+            color: white;
+        }
+        #button-stop {
+
+            background-color: red;
+        }
+        .section-02 {
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Js Timers</h1>
+
+<section >
+    <div >A</div>
+    <div >B</div>
+    <div >C</div>
+    <div >D</div>
+    <div >E</div>
+    <div >F</div>
+</section>
+
+<section class="section-02">
+    <button class="button" id="button-start">Start</button>
+    <button class="button" id="button-stop">Stop</button>
+</section>
+
+<script>
+    let start_button = document.getElementById("button-start")
+    let stop_button = document.getElementById("button-stop")
+    let array=["A", "B", "C", "D", "E", "F"]
+
+    let intervalId;
+
+    start_button.addEventListener('click', function () {
+
+        intervalId =setInterval(() => {
+        let last_value=array.pop();
+        array.unshift(last_value);
+        console.log(array);
+
+        document.getElementsByTagName("div")[0].innerText = array[0];
+        document.getElementsByTagName("div")[1].innerText = array[1];
+        document.getElementsByTagName("div")[2].innerText = array[2];
+        document.getElementsByTagName("div")[3].innerText = array[3];
+        document.getElementsByTagName("div")[4].innerText = array[4];
+        document.getElementsByTagName("div")[5].innerText = array[5];
+
+        }, 3000);
+    })
+
+    stop_button.addEventListener('click', function () {
+        clearInterval(intervalId);
+    });
+
+</script>
+</body>
+</html>
